@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Widget Demo</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: #2563eb;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: #4b5563;
+        margin-bottom: 1rem;
+      }
+      .content {
+        padding: 2rem;
+        background: #f9fafb;
+        border-radius: 12px;
+        margin: 2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat Widget Demo</h1>
+
+    <div class="content">
+      <h2>About</h2>
+      <p>
+        This is a demo page showing the chat widget in action. Click the chat
+        button in the bottom right corner to start a conversation.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Modern and responsive design</li>
+        <li>Real-time chat experience</li>
+        <li>Easy integration</li>
+        <li>Customizable appearance</li>
+      </ul>
+
+      <h2>Lorem Ipsum</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+
+      <p>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+
+    <!-- Chat Widget Integration -->
+    <script src="chat-widget.js"></script>
+    <script>
+      ChatWidget.init({
+        clientId: "demo",
+        apiEndpoint: "https://api.example.com/chat",
+      });
+    </script>
+  </body>
+</html>
