@@ -1,11 +1,15 @@
 class ChatWidget {
   static init(config) {
-    if (!config.clientId || !config.apiEndpoint) {
-      console.error("ChatWidget: clientId and apiEndpoint are required");
+    if (!config.subId) {
+      console.error("ChatWidget: subId is required");
       return;
     }
 
-    // Create and inject CSS
+    ChatWidget.config = {
+      subId: config.subId,
+      apiEndpoint: "https://api.servicemate.com/chat", // Hardcoded API endpoint
+    };
+
     const style = document.createElement("style");
     style.textContent = `
       #chat-widget-container {
@@ -127,7 +131,7 @@ class ChatWidget {
     widget.innerHTML = `
       <div id="chat-widget-window">
         <div id="chat-widget-header">
-          <span>Chat Support</span>
+          <span>ServiceMATE Support</span>
           <button onclick="ChatWidget.toggle()" style="background:none;border:none;color:white;cursor:pointer;font-size:20px;">×</button>
         </div>
         <div id="chat-widget-messages">
@@ -153,7 +157,6 @@ class ChatWidget {
     // Initialize functionality
     const chatWindow = document.getElementById("chat-widget-window");
     const messageInput = chatWindow.querySelector("input");
-    const messagesContainer = document.getElementById("chat-widget-messages");
 
     // Handle Enter key
     messageInput.addEventListener("keypress", (e) => {
@@ -161,9 +164,6 @@ class ChatWidget {
         ChatWidget.sendMessage();
       }
     });
-
-    // Store config
-    ChatWidget.config = config;
   }
 
   static toggle() {
@@ -205,15 +205,15 @@ class ChatWidget {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     try {
-      // Send message to API
+      // Send message to API with just sub_id and message
       const response = await fetch(ChatWidget.config.apiEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          clientId: ChatWidget.config.clientId,
-          message: text,
+          sub_id: ChatWidget.config.subId,
+          user_msg: text,
         }),
       });
 
